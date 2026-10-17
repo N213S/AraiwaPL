@@ -26,7 +26,8 @@
 4. [Strict Meme Rules & Traps](#strict-meme-rules--traps)
 5. [Syntax & Statement Structure](#syntax--statement-structure)
 6. [Usage Guide](#usage-guide)
-7. [Project File Structure](#project-file-structure)
+7. [Real-World Examples](#real-world-examples)
+8. [Project File Structure](#project-file-structure)
 
 ---
 
@@ -261,6 +262,68 @@ ALL 11 TESTS PASSED SUCCESSFULLY!
 
 ---
 
+## Real-World Examples
+
+### 1. Restaurant POS & Cashier System (`pos_cashier.arw`)
+A complete restaurant point-of-sale checkout simulation demonstrating interactive ordering loops, running subtotal calculation, receipt printing, cash validation, and change computation:
+
+- **Features:**
+  - Interactive ordering menu utilizing `ถาม` for live user input
+  - Dynamic item counting and order subtotal tracking
+  - Full receipt generation
+  - Cash payment validation (prompts for additional payment if cash is insufficient)
+  - Change calculation with Alpha Trap (67) avoidance checks
+
+**Run Command:**
+```bash
+python araiwa.py pos_cashier.arw
+```
+
+**Sample Output:**
+```text
+===============================================
+ 🍛 ยินดีต้อนรับสู่ระบบคิดเงินร้านอาหารตามสั่ง (POS) 
+===============================================
+
+--- เมนูอาหาร ---
+1. กะเพราหมูกรอบไข่ดาว (70 บาท)
+2. ข้าวผัดหมูโบราณ (50 บาท)
+3. ต้มยำกุ้งน้ำข้น (120 บาท)
+4. ชาไทยเย็นหวานเจี๊ยบ (30 บาท)
+5. 💳 คิดเงิน / ชำระบิล
+6. ❌ ยกเลิกและออกจากระบบ
+👉 กรุณาเลือกรายการ (1-6): 1
+สั่งกี่จานดี: 2
+✅ เพิ่ม กะเพราหมูกรอบ 2 จาน (ยอดสะสม: 140 บาท)
+
+--- เมนูอาหาร ---
+...
+👉 กรุณาเลือกรายการ (1-6): 5
+
+================ ใบเสร็จรับเงิน ================
+รวมจำนวนที่สั่งทั้งหมด: 2 รายการ
+ยอดรวมทั้งสิ้น: 140 บาท
+-----------------------------------------------
+💵 รับเงินสดจากลูกค้า: 100
+❌ เงินไม่พอเว้ย! ยังขาดอีก 40 บาท จ่ายเพิ่มมาเดี๋ยวนี้
+💵 รับเงินสดจากลูกค้า: 200
+💰 เงินทอน: 60 บาท
+🎉 ชำระเงินเรียบร้อย ขอบใจที่มาอุดหนุน โอกาสหน้าเชิญใหม่นะไอ้สอง!
+===============================================
+```
+
+---
+
+### 2. Interactive Number Guessing Game (`guess_game.arw`)
+A real-time number guessing game utilizing a `วนแม่งเข้าไป` loop and `ถาม` input to prompt the player for guesses, offering "too high" or "too low" hints until the correct answer is guessed:
+
+**Run Command:**
+```bash
+python araiwa.py guess_game.arw
+```
+
+---
+
 ## Project File Structure
 
 | File | Purpose |
@@ -275,6 +338,7 @@ ALL 11 TESTS PASSED SUCCESSFULLY!
 | `errors.py` | Custom language exceptions matching exact rules.txt output strings |
 | `test.arw` | Official reference test suite script |
 | `guess_game.arw` | Real-time interactive number guessing game using the `ถาม` input command |
+| `pos_cashier.arw` | Interactive Restaurant POS & Cashier checkout system |
 | `test_traps.py` | Automated test suite verifying all 11 meme traps and edge cases |
 | `README.md` | Complete documentation and specifications in Thai |
 | `README_EN.md` | Complete documentation and specifications in English |
